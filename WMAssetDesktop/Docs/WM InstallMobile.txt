@@ -1,0 +1,8 @@
+Enterprise Provisioner - CT40 EP
+Build Number 92.00.15(0182)
+provisioning bundle - HON660-R-920.00.15-(0182)
+
+Install EPv1.07.00.0637.msi 
+Install Device Settings Package
+HON660Settings_91-92.00.15.exe
+
