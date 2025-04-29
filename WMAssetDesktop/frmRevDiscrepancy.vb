@@ -1,7 +1,6 @@
-﻿Imports WmAssetWebServiceClientNet.Models
-Imports WmAssetWebServiceClientNet
+﻿Imports System.IO
 Imports System.Net.Http
-Imports System.IO
+Imports WmAssetWebServiceClientNet.Models
 Public Class frmRevDiscrepancy
     Dim httpClient As HttpClient
     Dim discpAsset As IEnumerable(Of Discrepancy)

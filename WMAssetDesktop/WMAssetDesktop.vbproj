@@ -6,17 +6,60 @@
     <StartupObject>WMAssetDesktop.My.MyApplication</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
-    <ImportedNamespaces>Npgsql=False,Npgsql.PostgresTypes=False,NpgsqlTypes=False,System.Data=False,System.Data.OleDb=False,System.Drawing=False,System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,WMAssetDesktop=True</ImportedNamespaces>
     <ApplicationIcon>wm_cypher_green.ico</ApplicationIcon>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <Company>Alpha Systems</Company>
+    <PackageIcon>wm_cypher_green1.png</PackageIcon>
+    <Copyright>AlphaSystems2025</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>C:\projects\WMAsset\WMAssetDesktop\WMAssetDesktop\bin\Debug\net8.0-windows10.0.22621.0</OutputPath>
+    <OutputPath>C:\projects\WMAsset\WMAssetDesktop\WMAssetDesktop\bin\Debug</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42024,42030,42032,42036,42099,42104,42108,42109</NoWarn>
+    <DefineDebug>True</DefineDebug>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <OutputPath>C:\projects\WMAsset\WMAssetDesktop\WMAssetDesktop\bin\Debug</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42024,42030,42032,42036,42099,42104,42108,42109</NoWarn>
+    <DefineDebug>True</DefineDebug>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutputPath>C:\projects\WMAsset\WMAssetDesktop\WMAssetDesktop\bin\Debug</OutputPath>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42024,42030,42032,42036,42099,42104,42108,42109</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DefineDebug>True</DefineDebug>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>C:\projects\WMAsset\WMAssetDesktop\WMAssetDesktop\bin\Debug\net8.0-windows10.0.22621.0</OutputPath>
+    <OutputPath>C:\projects\WMAsset\WMAssetDesktop\WMAssetDesktop\bin\Debug</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42024,42030,42032,42036,42099,42104,42108,42109</NoWarn>
+    <DefineDebug>False</DefineDebug>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <OutputPath>C:\projects\WMAsset\WMAssetDesktop\WMAssetDesktop\bin\Debug</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42024,42030,42032,42036,42099,42104,42108,42109</NoWarn>
+    <DefineDebug>False</DefineDebug>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutputPath>C:\projects\WMAsset\WMAssetDesktop\WMAssetDesktop\bin\Debug</OutputPath>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42024,42030,42032,42036,42099,42104,42108,42109</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DefineDebug>False</DefineDebug>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="WmAssetWebServiceClientNet\**" />
+    <EmbeddedResource Remove="WmAssetWebServiceClientNet\**" />
+    <None Remove="WmAssetWebServiceClientNet\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="frmDownload.Designer.vb" />
@@ -31,20 +74,7 @@
 
   <ItemGroup>
     <None Remove="MainWindow.xaml.cs" />
-    <None Remove="WmAssetWebServiceClientNet.dll" />
     <None Remove="WmAssetWebServiceClientNet.pdb" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <COMReference Include="MSDASC">
-      <WrapperTool>tlbimp</WrapperTool>
-      <VersionMinor>0</VersionMinor>
-      <VersionMajor>1</VersionMajor>
-      <Guid>2206ceb0-19c1-11d1-89e0-00c04fd7a829</Guid>
-      <Lcid>0</Lcid>
-      <Isolated>false</Isolated>
-      <EmbedInteropTypes>true</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -52,9 +82,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Import Include="Npgsql" />
-    <Import Include="Npgsql.PostgresTypes" />
-    <Import Include="NpgsqlTypes" />
     <Import Include="System.Data" />
     <Import Include="System.Data.OleDb" />
     <Import Include="System.Drawing" />
@@ -71,10 +98,10 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces">
-      <HintPath>..\..\..\wm test\AssetFormTooty-master\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <HintPath>..\..\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="MicWrapper">
-      <HintPath>..\..\micwrapper-master\bin\Debug\net8.0\MicWrapper.dll</HintPath>
+      <HintPath>..\..\..\wmsourcecontrol\micwrapper\bin\Debug\net8.0\MicWrapper.dll</HintPath>
     </Reference>
     <Reference Include="WmAssetWebServiceClientNet">
       <HintPath>..\..\WmAssetWebServiceClientNet-master\bin\Debug\net8.0\WmAssetWebServiceClientNet.dll</HintPath>
@@ -92,6 +119,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="My Project\Settings.Designer.vb">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -107,6 +139,23 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Update="My Project\Settings.settings">
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Update="Resources\wm_cypher_green1.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\projects\WMAsset\WMAssetDesktop\WMAssetDesktop\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\projects\WMAsset\WMAssetDesktop\WMAssetDesktop\.editorconfig" />
   </ItemGroup>
 
 </Project>

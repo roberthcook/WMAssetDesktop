@@ -1,18 +1,26 @@
-﻿Imports WmAssetWebServiceClientNet
-Imports WmAssetWebServiceClientNet.Models
-Imports MicWrapper
+﻿Imports System.ComponentModel
 Imports System.Net.Http
-Imports System.ComponentModel
 Imports System.Threading
+Imports MicWrapper
+Imports WmAssetWebServiceClientNet
 
 Public Class frmMainMnu
     Dim bSuccess As Boolean = False
     Dim t1 As System.Threading.Timer
+    Dim ds As AssetDataRepository
+    Dim httpClient As HttpClient
+    Dim objAuth As Auth
+    Dim user As CurrentUser
+    Dim authTime As DateTime
 
-    Private Async Sub btnLogIn_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        btnLogin.Enabled = False
+
+
+    Private Async Sub BtnLogIn_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Await LoginRefresh()
-
+        If Not (user Is Nothing) Then
+            authTime = DateTime.Now
+            MsgBox(user.DisplayName)
+        End If
         If bSuccess Then
             ' MsgBox(user.DisplayName)
             Enable_Buttons()
@@ -22,7 +30,6 @@ Public Class frmMainMnu
     End Sub
 
     Private Async Function LoginRefresh() As Task
-        user = Nothing
         objAuth = New Auth(New AzureAdOptions() With {
             .Instance = "https://login.microsoftonline.com/",
             .TenantId = "20fdd699-f9d9-45d6-93ec-1453b137984d",
@@ -32,25 +39,13 @@ Public Class frmMainMnu
             .GraphScopes = "user.read"})
 
         user = Await objAuth.Authenticate(Me.Handle)
-
-        If user IsNot Nothing Then
+        If Not (user Is Nothing) Then
 
             Dim tsInterval As TimeSpan = user.TokenExpiration - DateTime.Now
-
             Dim refreshInterval As Integer = 1 + tsInterval.TotalMilliseconds
             SetupTokenTimer(refreshInterval)
-            ds.SetAccessToken(user.ApiToken)
-            MsgBox(user.DisplayName, vbOKOnly, "DISPLAY NAME")
-            MsgBox(user.Username, vbOKOnly, tsInterval.ToString)
-
             bSuccess = True
-        Else
-            MsgBox("User did not authenticate!", vbOKOnly, "Login Failed")
-            bSuccess = False
         End If
-
-
-
     End Function
 
     Private Sub SetupTokenTimer(interval As Integer)
@@ -59,9 +54,19 @@ Public Class frmMainMnu
     End Sub
 
     Private Async Sub TokenTimerCallback(ByVal state As Object)
-        ' Token has expired, acquire a new one
-        Await LoginRefresh()
+        If Me.InvokeRequired Then
+            Me.Invoke(Sub() TokenTimerCallback(state))
+            Return
+        End If
+
+        If DateDiff(DateInterval.Minute, authTime, DateTime.Now) < 2 Then
+            Await LoginRefresh()
+        Else
+            Call btnLogout_Click(Nothing, Nothing)
+        End If
     End Sub
+
+
 
     Private Sub Disable_Buttons()
         btnComments.Enabled = False
@@ -221,8 +226,10 @@ Public Class frmMainMnu
 
     Private Sub frmMainMnu_Load(sender As Object, e As EventArgs) Handles Me.Load
         '' instantiate our httpclient
+
+
         httpClient = New HttpClient With {
-            .BaseAddress = New Uri("https://bcdevapi.azurewebsites.net")}
+            .BaseAddress = New Uri(sUrl)}
 
         '' create an instance of the AssetDataRepository
         ds = New AssetDataRepository(httpClient)

@@ -1,10 +1,4 @@
-﻿Imports System.Linq
-Imports WmAssetWebServiceClientNet.Models
-Imports WmAssetWebServiceClientNet
-Imports System.Net.Http
-Imports System.Drawing.Printing
-
-Public Class frmViewDisposeImport
+﻿Public Class frmViewDisposeImport
     Private Sub Button1_Click(sender As Object, e As EventArgs)
 
     End Sub

@@ -1,8 +1,7 @@
-﻿
-Imports WmAssetWebServiceClientNet.Models
-Imports WmAssetWebServiceClientNet
-Imports System.Net.Http
+﻿Imports System.Net.Http
 Imports MicWrapper
+Imports WmAssetWebServiceClientNet
+Imports WmAssetWebServiceClientNet.Models
 
 
 Module modData
@@ -40,7 +39,7 @@ Module modData
     Public sDisposeDate As String
     Public sDisposeMethod As String
     Public iId As Int16
-
+    Public sUrl As String = My.Settings.URL
     Public sCapAmt As String
     Public sDeprAmt As String
     Public sDeprStart As String

@@ -1,6 +1,4 @@
 ﻿Imports WmAssetWebServiceClientNet.Models
-Imports WmAssetWebServiceClientNet
-Imports System.Net.Http
 Public Class frmComments
     'Dim httpClient As HttpClient
     'Dim assetDataRepository As AssetDataRepository

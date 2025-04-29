@@ -1,6 +1,4 @@
-﻿Imports WmAssetWebServiceClientNet
-Imports System.Net.Http
-Imports System.IO
+﻿Imports System.IO
 
 
 Public Class frmViewSchedules

@@ -1,6 +1,4 @@
 ﻿Imports WmAssetWebServiceClientNet.Models
-Imports WmAssetWebServiceClientNet
-Imports System.Net.Http
 Public Class frmAddComment
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim bRslt As Boolean = False

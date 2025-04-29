@@ -1,11 +1,11 @@
-﻿Imports WmAssetWebServiceClientNet.Models
+﻿Imports System.Net.Http
 Imports WmAssetWebServiceClientNet
-Imports System.Net.Http
+Imports WmAssetWebServiceClientNet.Models
 
 
 Public Class frmViewInventory
     Private Sub frmViewInventory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblDept.Text="Department:" &sRespOrg
+        lblDept.Text = "Department:" & sRespOrg
         loadDatagrid()
     End Sub
     Private Sub loadDatagrid()

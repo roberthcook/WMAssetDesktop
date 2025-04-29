@@ -1,7 +1,4 @@
-﻿Imports WmAssetWebServiceClientNet
-Imports WmAssetWebServiceClientNet.Models
-Imports System.Net.Http
-Imports System.IO
+﻿Imports System.IO
 
 Public Class frmDeptDownLoad
     Private Sub frmDeptDownLoad_Load(sender As Object, e As EventArgs) Handles Me.Load

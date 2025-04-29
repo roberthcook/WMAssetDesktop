@@ -1,8 +1,6 @@
-﻿Imports WmAssetWebServiceClientNet
-Imports WmAssetWebServiceClientNet.Models
-Imports System.Net.Http
+﻿Imports System.IO
 Imports System.Text
-Imports System.IO
+Imports WmAssetWebServiceClientNet.Models
 Public Class frmFinalInventory
     Dim bLoading As Boolean = True
     Dim strtDate As String = ""

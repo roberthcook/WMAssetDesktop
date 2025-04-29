@@ -1,11 +1,7 @@
-﻿Imports WmAssetWebServiceClientNet.Models
-Imports WmAssetWebServiceClientNet
+﻿Imports System.IO
 Imports System.Net.Http
-Imports System.IO
-Imports ClosedXML
-Imports ClosedXML.Excel
-Imports DocumentFormat.OpenXml.Spreadsheet
-Imports System.Diagnostics.Metrics
+Imports WmAssetWebServiceClientNet
+Imports WmAssetWebServiceClientNet.Models
 Public Class frmReViewInventory
     Dim httpClient As HttpClient
     Dim invAsset As IEnumerable(Of InventoryAsset)

@@ -1,7 +1,5 @@
 ﻿
 Imports WmAssetWebServiceClientNet.Models
-Imports WmAssetWebServiceClientNet
-Imports System.Net.Http
 Public Class frmSchedule
     Public bUpdate As Boolean = False
     Public bLoading As Boolean = True
